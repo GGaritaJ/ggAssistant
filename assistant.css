@@ -1,0 +1,144 @@
+﻿/*////////////////////////////////////////////
+//  ggAssistant JS/CSS      PlugIn V1.0     //
+//  Developed by: Ing.Gerardo Garita J.     //
+//                FullStack Developer       //
+//  email:  info@ggaritaj.com               //
+//          gerardo.garita@ecomtrading.com  //
+//  date:       wednesday, 2018-07-25       //
+//  last date:  wednesday, 2018-07-25       //
+////////////////////////////////////////////*/
+
+div.assistant {
+    margin: 5px 0px;
+}
+
+    div.assistant ul.assistant {
+        display: inline-block;
+        padding-left: 0;
+        margin: 0px auto;
+        width: 100%;
+        list-style: none;
+    }
+
+        div.assistant ul.assistant > li {
+            float: left;
+            background: #FFF;
+        }
+
+        div.assistant ul.assistant > li:hover {
+            cursor:pointer;
+        }
+
+            div.assistant ul.assistant > li > a {
+                position: relative;
+                float: left;
+                padding: 10px 5px;
+                line-height: 1.42857143;
+                text-decoration: none;
+                color: #6aa242;
+                background-color: #ffffff;
+                text-align: left;
+                width: 100%;
+                height: 100px;
+                max-height: 120px;
+                font-size: 12px;
+                border-radius: 2px;
+                border: 1px solid #dddddd;
+                -webkit-transition: all 0.5s ease-in-out;
+                -moz-transition: all 0.5s ease-in-out;
+                transition: all 0.5s ease-in-out;
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Chrome/Safari/Opera */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* IE/Edge */
+                user-select: none; /* non-prefixed version, currently not supported by any browser */
+            }
+
+                div.assistant ul.assistant > li > a:hover {
+                    color: #E98A2C;
+                    border-color: #c6c6c6;
+                    text-decoration-style: double;
+                }
+
+                div.assistant ul.assistant > li > a:focus {
+                    outline: none;
+                }
+
+            div.assistant ul.assistant > li.active > a,
+            div.assistant ul.assistant > li.active > a:hover {
+                color: #f9f9f9;
+                background-color: #4e792f;
+                cursor: default;
+                border-top: 1px solid #ddd;
+                z-index: 5;
+            }
+
+            div.assistant ul.assistant > li.disabled > a,
+            div.assistant ul.assistant > li.disabled > a:hover,
+            div.assistant ul.assistant > li.disabled > a:focus {
+                color: #888;
+                background-color: #ffffff;
+                border-color: #dddddd;
+                cursor: not-allowed;
+                outline: none;
+                opacity: 0.7;
+            }
+
+        div.assistant ul.assistant li.prev,
+        div.assistant ul.assistant li.next {
+            width: 10%;
+        }
+
+        div.assistant ul.assistant li.page {
+            max-height: 100px;
+            height: auto;
+        }
+
+        div.assistant ul.assistant li.prev a,
+        div.assistant ul.assistant li.next a {
+            font-size: 26px;
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        div.assistant ul.assistant li.page a span.badge {
+            position: absolute;
+            left: 0px;
+            z-index: 5;
+            border: 2px solid #fff;
+            top: 15px;
+            background: #e98a2c;
+        }
+
+        div.assistant ul.assistant li.page a span.glyphicon {
+            width: 100%;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+@media(max-width:767px) {
+    div.assistant ul.assistant li.page {
+        width: 100% !important;
+    }
+    div.assistant ul.assistant li.prev,
+    div.assistant ul.assistant li.next {
+        width: 100% !important;
+    }
+
+        div.assistant ul.assistant li.prev a,
+        div.assistant ul.assistant li.next a {
+            padding: 5px 5px 5px 5px;
+            font-size: 18px;
+        }
+
+            div.assistant ul.assistant li.page a span.glyphicon {
+                font-size: 26px;
+            }
+            div.assistant ul.assistant li.prev a span.glyphicon:before {
+                content: "\e113" !important;
+            }
+            div.assistant ul.assistant li.next a span.glyphicon:before {
+                content: "\e114" !important;
+            }
+}

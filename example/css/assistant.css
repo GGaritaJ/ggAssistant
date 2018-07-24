@@ -8,6 +8,27 @@
 //  last date:  wednesday, 2018-07-25       //
 ////////////////////////////////////////////*/
 
+div.customPagination > div.paginate {
+    opacity: 0;
+    position: absolute;
+    top: -10000px;
+    left: -10000px;
+}
+
+    div.customPagination > div.paginate.active {
+        opacity: 1;
+        position: inherit;
+        top: 0px;
+    }
+
+div.myTheme {
+    border: solid 1px #DDDDDD;
+    border-radius: 5px;
+    padding: 15px 10px 15px 10px;
+    margin: 0px auto;
+    background: #F9F9F9;
+}
+
 div.assistant {
     margin: 5px 0px;
 }

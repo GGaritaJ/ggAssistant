@@ -4,31 +4,87 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="SMSIntegrity" />
-    <meta name="author" content="ECOM Agroindustrial Corporation" />
+    <meta name="description" content="ggAssistant" />
+    <meta name="author" content="Ing.Gerardo Garita Juarez" />
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; style-src 'self' http://fonts.googleapis.com/css; img-src 'self'; frame-src 'self'; child-src 'self'; form-action 'self'; connect-src 'self'; object-src 'self'; media-src 'self'" />
-    <meta http-equiv="X-Frame-Options" content="'SAMEORIGIN'">
     <meta http-equiv="X-Xss-Protection" content="'1; mode=block' always">
     <meta http-equiv="X-Content-Type-Options" content="'nosniff' always">
-    <title>Mi pagina web</title>
+    <title>jQuery Plugin ggAssistant</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <link href="css/assistant.css" rel="stylesheet" />
 </head>
 <body>
 
-    <!-- CONTENEDOR PRINCIPAL : INICIO -->
     <div id="mainContainer">
-        <!-- AGREGAR SENTENCIAS SOLO ACA -->
-        <button type="button" class="btn btn-primary">Aceptar</button>
-        <span class="glyphicon glyphicon-bell"></span>
-    </div>
-    <!-- CONTENEDOR PRINCIPAL : FIN -->
 
-    <script src="js/jquery-3.1.1.min.js"></script>
+        <!-- ASSISTANT : START -->
+        <div class="customPagination">
+
+            <!-- TOP ASSISTANT : START -->
+            <div class="assistant">
+                <ul id="topAssistant" class="assistant assistantClass">
+                    <li class="prev"><a tabindex="1" title=""><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                    <li class="page" onclick="console.log('page 1 clicked');"><a tabindex="2" title="" page-element="#pageOneId"><span class="badge">1</span><span class="glyphicon glyphicon-picture"></span>PAGE 1</a></li>
+                    <li class="page" onclick="console.log('page 2 clicked');"><a tabindex="3" title="" page-element="#pageTwoId"><span class="badge">2</span><span class="glyphicon glyphicon-info-sign"></span>PAGE 2</a></li>
+                    <li class="page" onclick="console.log('page 3 clicked');"><a tabindex="4" title="" page-element="#pageThreeId"><span class="badge">3</span><span class="glyphicon glyphicon-user"></span>PAGE 3</a></li>
+                    <li class="page" onclick="console.log('page 4 clicked');"><a tabindex="5" title="" page-element="#pageFourId"><span class="badge">4</span><span class="glyphicon glyphicon-list"></span>PAGE 4</a></li>
+                    <li class="next"><a tabindex="6" title=""><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                </ul>
+            </div>
+            <!-- TOP ASSISTANT : ENDS -->
+            <!-- PAGE 1 : START -->
+            <div id="pageOneId" class="paginate myTheme" assistant-element=".assistantClass">
+                page 1 content
+            </div>
+            <!-- PAGE 1 : ENDS -->
+            <!-- PAGE 2 : START -->
+            <div id="pageTwoId" class="paginate myTheme" assistant-element=".assistantClass">
+                page 2 content
+            </div>
+            <!-- PAGE 2 : ENDS -->
+            <!-- PAGE 3 : START -->
+            <div id="pageThreeId" class="paginate myTheme" assistant-element=".assistantClass">
+                page 3 content
+            </div>
+            <!-- PAGE 3 : ENDS -->
+            <!-- PAGE 4 : START -->
+            <div id="pageFourId" class="paginate myTheme" assistant-element=".assistantClass">
+                page 4 content
+            </div>
+            <!-- PAGE 4 : ENDS -->
+            <!-- BOTTOM ASSISTANT : START -->
+            <div class="assistant" style="margin:15px 0px 0px 0px;">
+                <ul id="bottomAssistant" class="assistant assistantClass">
+                    <li class="prev"><a tabindex="7" title=""><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                    <li class="page" onclick="console.log('page 1 clicked');"><a tabindex="8" title="" page-element="#pageOneId"><span class="badge">1</span><span class="glyphicon glyphicon-picture"></span>PAGE 1</a></li>
+                    <li class="page" onclick="console.log('page 2 clicked');"><a tabindex="9" title="" page-element="#pageTwoId"><span class="badge">2</span><span class="glyphicon glyphicon-info-sign"></span>PAGE 2</a></li>
+                    <li class="page" onclick="console.log('page 3 clicked');"><a tabindex="10" title="" page-element="#pageThreeId"><span class="badge">3</span><span class="glyphicon glyphicon-user"></span>PAGE 3</a></li>
+                    <li class="page" onclick="console.log('page 4 clicked');"><a tabindex="11" title="" page-element="#pageFourId"><span class="badge">4</span><span class="glyphicon glyphicon-list"></span>PAGE 4</a></li>
+                    <li class="next"><a tabindex="12" title=""><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                </ul>
+            </div>
+            <!-- BOTTOM ASSISTANT : ENDS -->
+
+        </div>
+        <!-- ASSISTANT : ENDS -->
+
+    </div>
+
+    <script src="js/jquery-2.2.4.js"></script>
+    <!--<script src="js/jquery-3.1.1.min.js"></script>-->
     <script src="js/bootstrap.js"></script>
     <script src="js/myscript.js"></script>
+    <script src="js/assistant.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$("#topAssistant").ggAssistant();
+            $(".assistantClass").ggAssistant();
+        });
+    </script>
+
 </body>
 </html>

@@ -5,19 +5,17 @@
 //  email:  info@ggaritaj.com               //
 //          gerardo.garita@ecomtrading.com  //
 //  date:       wednesday, 2018-07-25       //
-//  last date:  wednesday, 2016-07-25       //
+//  last date:  wednesday, 2018-07-25       //
 //////////////////////////////////////////////
 
 ; (function ($) {
     var classAssistant;
-    jQuery.fn.ggAssistant = function (data) {
+    jQuery.fn.ggAssistant = function (selector, options) {
         try {
-            classAssistant = this.selector;
-            $("ul" + classAssistant).each(function (pos, item) {
+            classAssistant = selector;
+            _ggSetSize(classAssistant);
+            $(this).each(function (pos, item) {
                 var idAssistant = item.id;
-                var assistantsQty = $("ul" + classAssistant).length;
-                var opts = $("ul" + classAssistant + " li:visible");
-                $(opts).attr("style", "width:" + (Math.floor(100 / (($(opts).length) / assistantsQty))) + "%");
                 $("ul#" + idAssistant + " li").on("click", function (e) {
                     var itemClicked = $(this);
                     if (!$(itemClicked).hasClass("disabled")) {
@@ -52,10 +50,10 @@
                     }
                 });
             });
-            if ((data != undefined) && (data !== null) && (data !== "")) {
+            if ((options != undefined) && (options !== null) && (options !== "")) {
                 var startPos = 2;
-                if (data.hasOwnProperty('startAt')) {
-                    startPos = ((data.startAt > 0) ? (data.startAt + 1) : startPos);
+                if (options.hasOwnProperty('startAt')) {
+                    startPos = ((options.startAt > 0) ? (options.startAt + 1) : startPos);
                 }
                 $("ul" + classAssistant + " li:nth-child(" + startPos + ")").addClass("active");
                 $("div[assistant-element='" + classAssistant + "']:nth-child(" + startPos + ")").addClass("active");
@@ -71,16 +69,16 @@
                     $("ul" + classAssistant + " li.prev, ul" + classAssistant + " li.next").removeClass("disabled");
                 }
                 var refresh = false;
-                if (data.hasOwnProperty('disable')) {
-                    $(data.disable).each(function (pos, item) {
+                if (options.hasOwnProperty('disable')) {
+                    $(options.disable).each(function (pos, item) {
                         $("ul" + classAssistant).each(function () {
                             $($(this).find("li.page")[item - 1]).addClass("disabled").removeClass("active");
                         });
                     });
                     refresh = true;
                 }
-                if (data.hasOwnProperty('hide')) {
-                    $(data.hide).each(function (pos, item) {
+                if (options.hasOwnProperty('hide')) {
+                    $(options.hide).each(function (pos, item) {
                         $("ul" + classAssistant).each(function () {
                             $($(this).find("li.page")[item - 1]).addClass("hide").removeClass("active");
                         });
@@ -110,9 +108,7 @@
     jQuery.fn.ggAssistant.Refresh = function () {
         try {
             if (classAssistant != undefined) {
-                var assistantsQty = $("ul" + classAssistant).length;
-                var opts = $("ul" + classAssistant + " li:visible");
-                $(opts).attr("style", "width:" + (Math.floor(100 / (($(opts).length) / assistantsQty))) + "%");
+                _ggSetSize(classAssistant);
                 var act = $("ul" + classAssistant + " li:nth-child(" + ($(classAssistant).ggAssistant.GetPosition() + 1) + ")")[0];
                 if (_ggIsMovementEnable("prev", $(act))) {
                     $("ul" + classAssistant + " li.prev").removeClass("disabled");
@@ -257,6 +253,11 @@
         catch (err) {
             console.log("Error: " + err + ".");
         }
+    };
+    function _ggSetSize(selector) {
+        var assistantsQty = $("ul" + selector).length;
+        var opts = $(selector).find("li:visible");
+        $(opts).attr("style", "width:" + (Math.floor(100 / (($(opts).length) / assistantsQty))) + "%");
     };
     function _ggSetActiveOption(type, opt) {
         var activeOption = null;

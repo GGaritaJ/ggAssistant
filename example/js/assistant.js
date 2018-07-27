@@ -11,90 +11,95 @@
 ; (function ($) {
     var classAssistant;
     jQuery.fn.ggAssistant = function (selector, options) {
+        
         try {
-            classAssistant = selector;
-            _ggSetSize(classAssistant);
-            $(this).each(function (pos, item) {
-                var idAssistant = item.id;
-                $("ul#" + idAssistant + " li").on("click", function (e) {
-                    var itemClicked = $(this);
-                    if (!$(itemClicked).hasClass("disabled")) {
-                        if ($(itemClicked).hasClass("page")) {
-                            var aTagInsted = $(this.childNodes[0]);
-                            var divPaginate = $(aTagInsted[0]).attr("page-element");
-                            var prevBtn = $("ul" + classAssistant + " li.prev");
-                            var nextBtn = $("ul" + classAssistant + " li.next");
-                            $("div[assistant-element='" + classAssistant + "'].paginate").removeClass("active");
-                            $("ul" + classAssistant + " li").removeClass("active");
-                            $(divPaginate).addClass("active");
-                            $("ul" + classAssistant + " a[page-element='" + divPaginate + "']").each(function () {
-                                $(this.parentNode).addClass("active");
-                            });
-                            $(prevBtn).removeClass("disabled");
-                            $(nextBtn).removeClass("disabled");
-                            if ($($("ul#" + idAssistant + " li.page.active").next()).hasClass("next")) {
-                                $(nextBtn).addClass("disabled");
-                            } else if ($($("ul#" + idAssistant + " li.page.active").prev()).hasClass("prev")) {
-                                $(prevBtn).addClass("disabled");
+            if (selector != undefined && selector != null) {
+                classAssistant = selector;
+                _ggSetSize(classAssistant);
+                $(this).each(function (pos, item) {
+                    var idAssistant = item.id;
+                    $("ul#" + idAssistant + " li").on("click", function (e) {
+                        var itemClicked = $(this);
+                        if (!$(itemClicked).hasClass("disabled")) {
+                            if ($(itemClicked).hasClass("page")) {
+                                var aTagInsted = $(this.childNodes[0]);
+                                var divPaginate = $(aTagInsted[0]).attr("page-element");
+                                var prevBtn = $("ul" + classAssistant + " li.prev");
+                                var nextBtn = $("ul" + classAssistant + " li.next");
+                                $("div[assistant-element='" + classAssistant + "'].paginate").removeClass("active");
+                                $("ul" + classAssistant + " li").removeClass("active");
+                                $(divPaginate).addClass("active");
+                                $("ul" + classAssistant + " a[page-element='" + divPaginate + "']").each(function () {
+                                    $(this.parentNode).addClass("active");
+                                });
+                                $(prevBtn).removeClass("disabled");
+                                $(nextBtn).removeClass("disabled");
+                                if ($($("ul#" + idAssistant + " li.page.active").next()).hasClass("next")) {
+                                    $(nextBtn).addClass("disabled");
+                                } else if ($($("ul#" + idAssistant + " li.page.active").prev()).hasClass("prev")) {
+                                    $(prevBtn).addClass("disabled");
+                                }
+                            } else {
+                                var activeOption = $("ul#" + idAssistant + " li.page.active");
+                                if ($(itemClicked).hasClass("prev")) {
+                                    _ggSetActiveOption("prev", activeOption);
+                                } else if ($(itemClicked).hasClass("next")) {
+                                    _ggSetActiveOption("next", activeOption);
+                                }
                             }
                         } else {
-                            var activeOption = $("ul#" + idAssistant + " li.page.active");
-                            if ($(itemClicked).hasClass("prev")) {
-                                _ggSetActiveOption("prev", activeOption);
-                            } else if ($(itemClicked).hasClass("next")) {
-                                _ggSetActiveOption("next", activeOption);
-                            }
+                            e.preventDefault();
                         }
-                    } else {
-                        e.preventDefault();
-                    }
+                    });
                 });
-            });
-            if ((options != undefined) && (options !== null) && (options !== "")) {
-                var startPos = 2;
-                if (options.hasOwnProperty('startAt')) {
-                    startPos = ((options.startAt > 0) ? (options.startAt + 1) : startPos);
-                }
-                $("ul" + classAssistant + " li:nth-child(" + startPos + ")").addClass("active");
-                $("div[assistant-element='" + classAssistant + "']:nth-child(" + startPos + ")").addClass("active");
-                var optQty = $("ul" + classAssistant)[0];
-                optQty = $(optQty).find("li").length;
-                if (startPos == 2) {
+                if ((options != undefined) && (options !== null) && (options !== "")) {
+                    var startPos = 2;
+                    if (options.hasOwnProperty('startAt')) {
+                        startPos = ((options.startAt > 0) ? (options.startAt + 1) : startPos);
+                    }
+                    $("ul" + classAssistant + " li:nth-child(" + startPos + ")").addClass("active");
+                    $("div[assistant-element='" + classAssistant + "']:nth-child(" + startPos + ")").addClass("active");
+                    var optQty = $("ul" + classAssistant)[0];
+                    optQty = $(optQty).find("li").length;
+                    if (startPos == 2) {
+                        $("ul" + classAssistant + " li.prev").addClass("disabled");
+                        $("ul" + classAssistant + " li.next").removeClass("disabled");
+                    } else if (startPos == (optQty - 1)) {
+                        $("ul" + classAssistant + " li.prev").removeClass("disabled");
+                        $("ul" + classAssistant + " li.next").addClass("disabled");
+                    } else {
+                        $("ul" + classAssistant + " li.prev, ul" + classAssistant + " li.next").removeClass("disabled");
+                    }
+                    var refresh = false;
+                    if (options.hasOwnProperty('disable')) {
+                        $(options.disable).each(function (pos, item) {
+                            $("ul" + classAssistant).each(function () {
+                                $($(this).find("li.page")[item - 1]).addClass("disabled").removeClass("active");
+                            });
+                        });
+                        refresh = true;
+                    }
+                    if (options.hasOwnProperty('hide')) {
+                        $(options.hide).each(function (pos, item) {
+                            $("ul" + classAssistant).each(function () {
+                                $($(this).find("li.page")[item - 1]).addClass("hide").removeClass("active");
+                            });
+                        });
+                        refresh = true;
+                    }
+                    if (refresh) {
+                        $(classAssistant).ggAssistant.Refresh();
+                    }
+                } else {
+                    $("ul" + classAssistant + " li:nth-child(2)").addClass("active");
+                    $("div[assistant-element='" + classAssistant + "']:nth-child(2)").addClass("active");
                     $("ul" + classAssistant + " li.prev").addClass("disabled");
                     $("ul" + classAssistant + " li.next").removeClass("disabled");
-                } else if (startPos == (optQty - 1)) {
-                    $("ul" + classAssistant + " li.prev").removeClass("disabled");
-                    $("ul" + classAssistant + " li.next").addClass("disabled");
-                } else {
-                    $("ul" + classAssistant + " li.prev, ul" + classAssistant + " li.next").removeClass("disabled");
                 }
-                var refresh = false;
-                if (options.hasOwnProperty('disable')) {
-                    $(options.disable).each(function (pos, item) {
-                        $("ul" + classAssistant).each(function () {
-                            $($(this).find("li.page")[item - 1]).addClass("disabled").removeClass("active");
-                        });
-                    });
-                    refresh = true;
-                }
-                if (options.hasOwnProperty('hide')) {
-                    $(options.hide).each(function (pos, item) {
-                        $("ul" + classAssistant).each(function () {
-                            $($(this).find("li.page")[item - 1]).addClass("hide").removeClass("active");
-                        });
-                    });
-                    refresh = true;
-                }
-                if (refresh) {
-                    $(classAssistant).ggAssistant.Refresh();
-                }
+                console.log("gg:assistant ready!");
             } else {
-                $("ul" + classAssistant + " li:nth-child(2)").addClass("active");
-                $("div[assistant-element='" + classAssistant + "']:nth-child(2)").addClass("active");
-                $("ul" + classAssistant + " li.prev").addClass("disabled");
-                $("ul" + classAssistant + " li.next").removeClass("disabled");
+                console.log("there is no selector");
             }
-            console.log("gg:assistant ready!");
         }
         catch (err) {
             console.log("Error: " + err + ".");

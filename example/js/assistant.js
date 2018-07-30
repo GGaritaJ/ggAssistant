@@ -1,17 +1,17 @@
 ﻿//////////////////////////////////////////////
-//  ggAssistant JS/CSS      PlugIn V1.0     //
+//  ggAssistant JS/CSS      PlugIn V1.1     //
 //  Developed by: Ing.Gerardo Garita J.     //
 //                FullStack Developer       //
 //  email:  info@ggaritaj.com               //
 //          gerardo.garita@ecomtrading.com  //
 //  date:       wednesday, 2018-07-25       //
-//  last date:  wednesday, 2018-07-25       //
+//  last date:  wednesday, 2018-07-30       //
 //////////////////////////////////////////////
 
 ; (function ($) {
     var classAssistant;
-    jQuery.fn.ggAssistant = function (selector, options) {
-        
+    var _gghistory = [];
+    jQuery.fn.ggAssistant = function (selector, options) {  
         try {
             if (selector != undefined && selector != null) {
                 classAssistant = selector;
@@ -22,6 +22,7 @@
                         var itemClicked = $(this);
                         if (!$(itemClicked).hasClass("disabled")) {
                             if ($(itemClicked).hasClass("page")) {
+                                _gghistory.push($(classAssistant).ggAssistant.GetPosition());
                                 var aTagInsted = $(this.childNodes[0]);
                                 var divPaginate = $(aTagInsted[0]).attr("page-element");
                                 var prevBtn = $("ul" + classAssistant + " li.prev");
@@ -161,6 +162,7 @@
     jQuery.fn.ggAssistant.SetPosition = function (position, fireEvent) {
         try {
             if (position != undefined && classAssistant != undefined) {
+                _gghistory.push($(classAssistant).ggAssistant.GetPosition());
                 fireEvent = ((fireEvent == undefined || fireEvent == null) ? true : fireEvent);
                 var liTag = $("ul" + classAssistant + " li:nth-child(" + (position + 1) + ")");
                 if (fireEvent === false) {
@@ -253,6 +255,23 @@
                 $(classAssistant).ggAssistant.Refresh();
             } else {
                 console.log("position is not set or there is no selector");
+            }
+        }
+        catch (err) {
+            console.log("Error: " + err + ".");
+        }
+    };
+    jQuery.fn.ggAssistant.History = function (quantity) {
+        try {
+            if (quantity == undefined || quantity == null || quantity == "") {
+                console.log("quantity is not set");
+                return null;
+            } else if (quantity === "all") {
+                return _gghistory;
+            } else if (quantity === "last") {
+                return _gghistory[_gghistory.length - 1];
+            } else {
+                return _gghistory[_gghistory.length - quantity];
             }
         }
         catch (err) {

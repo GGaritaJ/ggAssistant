@@ -1,9 +1,8 @@
 ﻿//////////////////////////////////////////////
-//  ggAssistant JS/CSS      PlugIn V1.1     //
+//  ggAssistant JS/CSS      PlugIn V1.0     //
 //  Developed by: Ing.Gerardo Garita J.     //
 //                FullStack Developer       //
 //  email:  info@ggaritaj.com               //
-//          gerardo.garita@ecomtrading.com  //
 //  date:       wednesday, 2018-07-25       //
 //  last date:  wednesday, 2018-07-30       //
 //////////////////////////////////////////////

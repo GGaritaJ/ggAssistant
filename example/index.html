@@ -12,7 +12,7 @@
     <meta http-equiv="X-Xss-Protection" content="'1; mode=block' always">
     <meta http-equiv="X-Content-Type-Options" content="'nosniff' always">
     <title>jQuery Plugin ggAssistant</title>
-    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap-3.3.7.css" rel="stylesheet" />
     <link href="css/assistant.css" rel="stylesheet" />
     <link href="css/myStyle.css" rel="stylesheet" />
 </head>
@@ -25,7 +25,7 @@
 
             <!-- TOP ASSISTANT : START -->
             <div class="assistant">
-                <ul id="topAssistant" class="assistant assistantClass">
+                <ul id="topAssistant" class="assistant" assistant="assistantClass">
                     <li class="prev"><a tabindex="1" title=""><span class="glyphicon glyphicon-chevron-left"></span></a></li>
                     <li class="page" onclick="console.log('page 1 clicked');"><a tabindex="2" title="" page-element="#pageOneId"><span class="badge">1</span><span class="glyphicon glyphicon-picture"></span>PAGE 1</a></li>
                     <li class="page" onclick="console.log('page 2 clicked');"><a tabindex="3" title="" page-element="#pageTwoId"><span class="badge">2</span><span class="glyphicon glyphicon-info-sign"></span>PAGE 2</a></li>
@@ -36,28 +36,28 @@
             </div>
             <!-- TOP ASSISTANT : ENDS -->
             <!-- PAGE 1 : START -->
-            <div id="pageOneId" class="paginate myTheme" assistant-element=".assistantClass">
+            <div id="pageOneId" class="paginate myTheme" assistant-element="assistantClass">
                 page 1 content
             </div>
             <!-- PAGE 1 : ENDS -->
             <!-- PAGE 2 : START -->
-            <div id="pageTwoId" class="paginate myTheme" assistant-element=".assistantClass">
+            <div id="pageTwoId" class="paginate myTheme" assistant-element="assistantClass">
                 page 2 content
             </div>
             <!-- PAGE 2 : ENDS -->
             <!-- PAGE 3 : START -->
-            <div id="pageThreeId" class="paginate myTheme" assistant-element=".assistantClass">
+            <div id="pageThreeId" class="paginate myTheme" assistant-element="assistantClass">
                 page 3 content
             </div>
             <!-- PAGE 3 : ENDS -->
             <!-- PAGE 4 : START -->
-            <div id="pageFourId" class="paginate myTheme" assistant-element=".assistantClass">
+            <div id="pageFourId" class="paginate myTheme" assistant-element="assistantClass">
                 page 4 content
             </div>
             <!-- PAGE 4 : ENDS -->
             <!-- BOTTOM ASSISTANT : START -->
             <div class="assistant" style="margin:15px 0px 0px 0px;">
-                <ul id="bottomAssistant" class="assistant assistantClass">
+                <ul id="bottomAssistant" class="assistant" assistant="assistantClass">
                     <li class="prev"><a tabindex="7" title=""><span class="glyphicon glyphicon-chevron-left"></span></a></li>
                     <li class="page" onclick="console.log('page 1 clicked');"><a tabindex="8" title="" page-element="#pageOneId"><span class="badge">1</span><span class="glyphicon glyphicon-picture"></span>PAGE 1</a></li>
                     <li class="page" onclick="console.log('page 2 clicked');"><a tabindex="9" title="" page-element="#pageTwoId"><span class="badge">2</span><span class="glyphicon glyphicon-info-sign"></span>PAGE 2</a></li>
@@ -74,7 +74,7 @@
     </div>
 
     <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap-3.3.7.js"></script>
     <script src="js/assistant.js"></script>
     <script src="js/myscript.js"></script>
 

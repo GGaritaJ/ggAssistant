@@ -1,4 +1,3 @@
-#ggAssistant
 jQuery plugin ggAssistant v1.2
 -developed by GGaritaJ Gerardo Garita-
 

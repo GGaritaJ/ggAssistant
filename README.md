@@ -12,7 +12,8 @@ $("ul[assistant='assistantClass']").ggAssistant({
     disable: [1, 2],//start with disabled options
     hide: 4 //start with hidden options
 });
-#functions:
+
+*functions:*
 $("ul").Assistant().Refresh();
 var pos = $("ul#topAssistant").Assistant().GetPosition();
 $("#topAssistant,#bottomAssistant").Assistant().SetPosition(2);

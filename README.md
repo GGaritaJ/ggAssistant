@@ -7,6 +7,7 @@ Plugin based on jquery to summarize the content on the screen with an pagination
 Usage:
 ```javascript
 $("ul[assistant]").ggAssistant();//default
+
 $("ul[assistant='assistantClass']").ggAssistant({
     startAt: 3,//start position
     disable: [1, 2],//start with disabled options

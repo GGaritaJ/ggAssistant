@@ -6,12 +6,13 @@ Plugin based on jquery to summarize the content on the screen with an pagination
 
 Usage:
 ```javascript
-$("ul[assistant]").ggAssistant();
+$("ul[assistant]").ggAssistant();//default
 $("ul[assistant='assistantClass']").ggAssistant({
-    startAt: 3,
-    disable: [1, 2],
-    hide: 4
+    startAt: 3,//start position
+    disable: [1, 2],//start with disabled options
+    hide: 4 //start with hidden options
 });
+#functions:
 $("ul").Assistant().Refresh();
 var pos = $("ul#topAssistant").Assistant().GetPosition();
 $("#topAssistant,#bottomAssistant").Assistant().SetPosition(2);

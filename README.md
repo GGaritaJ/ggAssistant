@@ -13,7 +13,7 @@ $("ul[assistant='assistantClass']").ggAssistant({
     hide: 4 //start with hidden options
 });
 
-*functions:*
+//Some functions:
 $("ul").Assistant().Refresh();
 var pos = $("ul#topAssistant").Assistant().GetPosition();
 $("#topAssistant,#bottomAssistant").Assistant().SetPosition(2);

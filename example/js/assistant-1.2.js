@@ -32,7 +32,7 @@
                     if (!$(itemClicked).hasClass("disabled")) {
                         if ($(itemClicked).hasClass("page")) {
                             _gghistory.push([_classAssistant, $(ul).Assistant().GetPosition()]);
-                            var aTagInsted = $(this.childNodes[0]);
+                            var aTagInsted = $(this.children[0]);
                             var divPaginate = $(aTagInsted[0]).attr("page-element");
                             var prevBtn = $("ul[assistant='" + _classAssistant + "']").find("li.prev");
                             var nextBtn = $("ul[assistant='" + _classAssistant + "']").find("li.next");
